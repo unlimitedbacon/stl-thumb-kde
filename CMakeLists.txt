@@ -6,7 +6,8 @@
 
 cmake_minimum_required(VERSION 3.0)
 
-project (stlthumbnail)
+project (stl-thumb-kde)
+set(PROJECT_VERSION 0.4.0)
 
 set(QT_MIN_VERSION "5.3.0")
 set(KF5_MIN_VERSION "5.2.0")
@@ -63,3 +64,12 @@ target_link_libraries(stlthumbnail
 
 install(TARGETS stlthumbnail DESTINATION ${PLUGIN_INSTALL_DIR})
 install(FILES stlthumbnail.desktop DESTINATION ${SERVICES_INSTALL_DIR})
+
+set(CPACK_GENERATOR "DEB")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Tyler Anderson <unlimitedbacon@gmail.com>")
+set(CPACK_DEBIAN_PACKAGE_VERSION ${PROJECT_VERSION})
+set(CPACK_DEBIAN_PACKAGE_HOMEPAGE "https://github.com/unlimitedbacon/stl-thumb-kde")
+set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "stl-thumb is a fast lightweight thumbnail generator for STL files. This is the KIO plugin that allows it to be used in KDE.")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libgl1, libc6, libgcc1, libosmesa6-dev, kio")
+
+include(CPack)
