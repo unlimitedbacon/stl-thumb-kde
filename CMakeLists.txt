@@ -4,12 +4,13 @@
 # https://blog.devolutions.net/2018/06/insider-series-using-rust-code-in-a-cc-project-with-cmake
 # https://users.rust-lang.org/t/issue-adding-a-rust-static-library-to-a-c-project-using-cmake/26478/3
 
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.10)
 
 project(stl-thumb-kde
 	VERSION 0.4.0
 	DESCRIPTION "A fast lightweight STL file thumbnail generator for KDE"
-	HOMEPAGE_URL "https://github.com/unlimitedbacon/stl-thumb-kde")
+	#HOMEPAGE_URL "https://github.com/unlimitedbacon/stl-thumb-kde"	# Doesn't work with CMake 3.10
+	)
 
 set(QT_MIN_VERSION "5.3.0")
 set(KF5_MIN_VERSION "5.2.0")
@@ -39,15 +40,18 @@ set(stlthumbnail_SRCS stlcreator.cpp)
 
 add_library(stlthumbnail MODULE ${stlthumbnail_SRCS})
 
-# Add stl-thumb rust library
+# Use local stl-thumb lib instead of system-wide lib
+# Dynamic
 #add_library(stl_thumb SHARED IMPORTED)
 #set_property(TARGET stl_thumb PROPERTY IMPORTED_LOCATION
 #    ../stl-thumb/target/release/libstl_thumb.so
 #)
-add_library(stl_thumb STATIC IMPORTED)
-set_property(TARGET stl_thumb PROPERTY IMPORTED_LOCATION
-    ../stl-thumb/target/release/libstl_thumb.a
-)
+# Static
+#add_library(stl_thumb STATIC IMPORTED)
+#set_property(TARGET stl_thumb PROPERTY IMPORTED_LOCATION
+#    ../stl-thumb/target/release/libstl_thumb.a
+#)
+
 set(CMAKE_STATIC_LINKER_FLAGS "-ldl -ldl -lutil -lutil -ldl -lrt -lpthread -lgcc_s -lc -lm -lrt -lpthread -lutil -lutil")
 
 target_link_libraries(stlthumbnail
