@@ -1,7 +1,6 @@
 #include "stlcreator.h"
-//#include "libstl_thumb.h"
-#include "stl-thumb/libstl_thumb.h"
 
+#include <libstl_thumb.h>
 #include <QFile>
 #include <QImage>
 #include <QtDebug>
