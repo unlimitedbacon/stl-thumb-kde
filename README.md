@@ -1,7 +1,31 @@
 stl-thumb-kde
 =============
 
-This is the KDE / KIO plugin for [stl-thumb](https://github.com/unlimitedbacon/stl-thumb).
+[![Build Status](https://github.com/unlimitedbacon/stl-thumb-kde/actions/workflows/cmake.yml/badge.svg)](https://github.com/unlimitedbacon/stl-thumb-kde/actions/workflows/cmake.yml)
+
+This is the KDE / KIO plugin for [stl-thumb](https://github.com/unlimitedbacon/stl-thumb). It shows previews of `.stl` files in Dolphin and throughout the KDE desktop.
+
+![stl-thumb-kde](https://user-images.githubusercontent.com/3131268/116009004-fe666680-a5cb-11eb-9ecf-cb443120c2d5.png)
+
+## Installation
+
+You will first need to install [stl-thumb](https://github.com/unlimitedbacon/stl-thumb).
+
+#### Arch
+
+A package is available [in the AUR](https://aur.archlinux.org/packages/stl-thumb-kde/). Install it manually or using your favorite AUR helper.
+
+```
+$ yay -S stl-thumb-kde
+```
+
+#### Debian / Ubuntu
+
+[Download the .deb package](https://github.com/unlimitedbacon/stl-thumb-kde/releases/latest) for your platform (usually amd64) and install it. Packages are also available for armhf (Raspberry Pi) and arm64 (Pine64 and other SBCs).
+
+```
+$ sudo apt install ./stl-thumb-kde_0.4.0_amd64.deb
+```
 
 Build Instructions
 ------------------
