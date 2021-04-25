@@ -7,8 +7,8 @@
 cmake_minimum_required(VERSION 3.10)
 
 project(stl-thumb-kde
-	VERSION 0.4.0
-	DESCRIPTION "A fast lightweight STL file thumbnail generator for KDE"
+	#VERSION 0.4.0
+	DESCRIPTION "Fast lightweight STL file thumbnail generator for KDE"
 	#HOMEPAGE_URL "https://github.com/unlimitedbacon/stl-thumb-kde"	# Doesn't work with CMake 3.10
 	)
 
@@ -75,7 +75,12 @@ install(TARGETS stlthumbnail DESTINATION ${LIB_INSTALL_DIR}/qt5/plugins/)
 install(FILES stlthumbnail.desktop DESTINATION ${SERVICES_INSTALL_DIR})
 
 set(CPACK_GENERATOR "DEB")
+set(CPACK_PACKAGE_VERSION_MAJOR 0)
+set(CPACK_PACKAGE_VERSION_MINOR 4)
+set(CPACK_PACKAGE_VERSION_PATCH 0)
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Tyler Anderson <unlimitedbacon@gmail.com>")
-set(CPACK_DEBIAN_PACKAGE_DEPENDS "libgl1, libc6, libgcc1, libosmesa6-dev, kio")
+set(CPACK_DEBIAN_PACKAGE_HOMEPAGE "https://github.com/unlimitedbacon/stl-thumb-kde")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libgl1, libc6, libgcc1, libosmesa6-dev, kio, stl-thumb")
+set(CPACK_DEBIAN_FILE_NAME DEB-DEFAULT)
 
 include(CPack)
