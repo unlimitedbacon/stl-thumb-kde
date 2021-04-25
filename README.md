@@ -12,13 +12,7 @@ Build dependencies:
 * qtbase5-dev
 * kio-dev
 
-1. First you will need to build `stl-thumb`, which this project uses as a library.
-    ```
-    git checkout https://github.com/unlimitedbacon/stl-thumb.git
-    cd stl-thumb
-    cargo build --release
-    cd ..
-    ```
+1. Install [stl-thumb](https://github.com/unlimitedbacon/stl-thumb)
 2. Then you can build the plugin.
     ```
     mkdir build
