@@ -16,6 +16,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Install Dependencies
+      run: |
+        sudo apt update
+        sudo apt install extra-cmake-modules qtbase5-dev kio-dev
 
     - name: Create Build Environment
       # Some projects don't allow in-source building, so create a separate build directory
