@@ -27,6 +27,16 @@ $ yay -S stl-thumb-kde
 $ sudo apt install ./stl-thumb-kde_0.4.0_amd64.deb
 ```
 
+#### openSUSE
+
+For openSUSE Tumblweed there is a user repo available:
+
+```
+$ sudo zypper ar -f obs://home:jubalh:stl stl
+$ sudo zypper ref
+$ sudo zypper install stl-thumb-kde
+```
+
 Build Instructions
 ------------------
 
