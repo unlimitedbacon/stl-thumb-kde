@@ -1,6 +1,17 @@
 name: Build
 
-on: [push]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+    inputs:
+      debug_enabled:
+        type: boolean
+        description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)'
+        required: false
+        default: false
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
@@ -12,20 +23,27 @@ jobs:
     # well on Windows or Mac.  You can convert this to a matrix build if you need
     # cross-platform coverage.
     # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
 
     steps:
     - uses: actions/checkout@v2
+
+      # Enable tmate debugging of manually-triggered workflows if the input option was provided
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
+      with:
+        detached: true
+      if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
     
     - name: Install Dependencies
       run: |
         sudo apt update
-        sudo apt install extra-cmake-modules qtbase5-dev kio-dev
+        sudo apt install extra-cmake-modules qtbase5-dev libkf5kio-dev
         
     - name: Install stl-thumb
       run: |
-        wget https://github.com/unlimitedbacon/stl-thumb/releases/download/v0.4.0/stl-thumb_0.4.0_amd64.deb
-        sudo apt install ./stl-thumb_0.4.0_amd64.deb
+        wget https://github.com/unlimitedbacon/stl-thumb/releases/download/v0.5.0/stl-thumb_0.5.0_amd64.deb
+        sudo apt install ./stl-thumb_0.5.0_amd64.deb
 
     - name: Create Build Environment
       # Some projects don't allow in-source building, so create a separate build directory
@@ -58,10 +76,15 @@ jobs:
     - name: Package
       working-directory: ${{github.workspace}}/build
       shell: bash
-      run: cpack
+      run: |
+        cpack
+        cpack -G RPM
       
     - name: Upload
       uses: actions/upload-artifact@v2.2.3
       with:
-        name: Debian Package
-        path: ${{github.workspace}}/build/*.deb
+        name: Binaries Package
+        path: |
+          ${{github.workspace}}/build/*.deb
+          ${{github.workspace}}/build/*.rpm
+          ${{github.workspace}}/build/stlthumbnail.so
