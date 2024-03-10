@@ -1,0 +1,9 @@
+{
+  "CacheThumbnail": true,
+  "KPlugin": {
+      "MimeTypes": [
+          "model/stl"
+      ],
+      "Name": "STL documents"
+  }
+}
