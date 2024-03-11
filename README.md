@@ -11,6 +11,31 @@ This is the KDE / KIO plugin for [stl-thumb](https://github.com/unlimitedbacon/s
 
 You will first need to install [stl-thumb](https://github.com/unlimitedbacon/stl-thumb).
 
+#### Arch
+
+A package is available [in the AUR](https://aur.archlinux.org/packages/stl-thumb-kde/). Install it manually or using your favorite AUR helper.
+
+```
+$ yay -S stl-thumb-kde
+```
+
+#### Debian / Ubuntu
+
+[Download the .deb package](https://github.com/unlimitedbacon/stl-thumb-kde/releases/latest) for your platform (usually amd64) and install it. Packages are also available for armhf (Raspberry Pi) and arm64 (Pine64 and other SBCs).
+
+```
+$ sudo apt install ./stl-thumb-kde_0.4.0_amd64.deb
+```
+
+#### openSUSE
+
+For openSUSE Tumblweed there is a user repo available:
+
+```
+$ sudo zypper ar -f obs://home:jubalh:stl stl
+$ sudo zypper ref
+$ sudo zypper install stl-thumb-kde
+```
 
 Build Instructions
 ------------------

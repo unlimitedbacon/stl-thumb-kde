@@ -22,7 +22,6 @@ KIO::ThumbnailResult StlCreator::create(const KIO::ThumbnailRequest &request)
 {
     const QString path = request.url().toLocalFile();
     std::string path_string = path.toStdString();
-    qCWarning(LOG_STL) << "STL-THUMB :: enter library";
     const char* path_cstring = path_string.c_str();
     int width  = request.targetSize().width() * request.devicePixelRatio();
     int height = request.targetSize().height() * request.devicePixelRatio();
@@ -43,8 +42,6 @@ KIO::ThumbnailResult StlCreator::create(const KIO::ThumbnailRequest &request)
                  (QImageCleanupFunction) &clean,
                  (void*) this);
 
-//    return true;
-    qCWarning(LOG_STL) << "STL-THUMB :: normal exit\n";
     return KIO::ThumbnailResult::pass(img);
 }
 
