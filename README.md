@@ -26,6 +26,12 @@ $ yay -S stl-thumb-kde
 ```
 $ sudo apt install ./stl-thumb-kde_0.4.0_amd64.deb
 ```
+#### Fedora / RedHat
+
+[Download the .rpm package](https://github.com/unlimitedbacon/stl-thumb-kde/releases/latest) and install it.
+```
+$ yum localinstall stl-thumb-kde-0.4.0_amd64.rpm
+```
 
 #### openSUSE
 
@@ -37,14 +43,14 @@ $ sudo zypper ref
 $ sudo zypper install stl-thumb-kde
 ```
 
-Build Instructions
+Build Instructions (Arch)
 ------------------
 
 Build dependencies:
 * cmake
 * extra-cmake-modules
-* qtbase5-dev
-* kio-dev
+* qt6-base
+* kio
 
 1. Install [stl-thumb](https://github.com/unlimitedbacon/stl-thumb)
 2. Then you can build the plugin.
@@ -54,7 +60,7 @@ Build dependencies:
     cmake -DCMAKE_BUILD_TYPE=Release ..
     make
     ```
-3. And install it for testing (on Debian or Ubuntu).
+3. And install it for testing.
     ```
     sudo make install
     ```
