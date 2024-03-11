@@ -7,9 +7,9 @@
 cmake_minimum_required(VERSION 3.16)
 
 project(stl-thumb-kde
-	#VERSION 0.4.0
+	#VERSION 0.5.0
 	DESCRIPTION "Fast lightweight STL file thumbnail generator for KDE"
-	#HOMEPAGE_URL "https://github.com/unlimitedbacon/stl-thumb-kde"	# Doesn't work with CMake 3.10
+	HOMEPAGE_URL "https://github.com/unlimitedbacon/stl-thumb-kde"	# Doesn't work with CMake 3.10
 	)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -60,17 +60,14 @@ target_link_libraries(stlthumbnail
 )
 
 # This path works on Arch
-install(TARGETS stlthumbnail DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf6/thumbcreator)
-
-
-#install(TARGETS stlthumbnail DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(TARGETS stlthumbnail DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf6/thumbcreator/)
 # This path works on Debian / Ubuntu
 #install(TARGETS stlthumbnail DESTINATION ${LIB_INSTALL_DIR}/qt6/plugins/)
 #install(FILES stlthumbnail.desktop DESTINATION ${SERVICES_INSTALL_DIR})
 
 set(CPACK_GENERATOR "DEB")
 set(CPACK_PACKAGE_VERSION_MAJOR 0)
-set(CPACK_PACKAGE_VERSION_MINOR 4)
+set(CPACK_PACKAGE_VERSION_MINOR 5)
 set(CPACK_PACKAGE_VERSION_PATCH 0)
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Tyler Anderson <unlimitedbacon@gmail.com>")
 set(CPACK_DEBIAN_PACKAGE_HOMEPAGE "https://github.com/unlimitedbacon/stl-thumb-kde")
